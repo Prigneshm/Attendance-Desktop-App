@@ -1,0 +1,243 @@
+﻿<Window
+    x:Class="eSSLAttendanceDesktopClient.Views.DeviceConnection.AddDeviceWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:eSSLAttendanceDesktopClient.Views.DeviceConnection"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="650"
+    Height="450"
+    Margin="0"
+    Padding="0"
+    BorderBrush="Transparent"
+    BorderThickness="0"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="SingleBorderWindow"
+    mc:Ignorable="d">
+    <Grid Margin="-2">
+        <Border
+            Margin="0"
+            Padding="0"
+            HorizontalAlignment="Stretch"
+            Background="{StaticResource PrimaryWhite}"
+            BorderThickness="2"
+            CornerRadius="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--#region [ Navigation ]-->
+                <Border
+                    Grid.Row="0"
+                    Padding="10"
+                    Background="{StaticResource AppButton2}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            x:Name="lblTitle"
+                            Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Content="Add Device"
+                            FontSize="16"
+                            Foreground="{StaticResource PrimaryWhite}"
+                            Style="{StaticResource lblSemiBold}" />
+                        <Image
+                            x:Name="imgClose"
+                            Grid.Column="1"
+                            Width="30"
+                            Height="30"
+                            Margin="0"
+                            HorizontalAlignment="Right"
+                            Mouse.MouseDown="imgClose_MouseDown"
+                            Source="pack://application:,,,/Images/icon_close.png"
+                            Visibility="Hidden" />
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+
+                <Grid Grid.Row="1" Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!--#region [ ROW - 0 ]-->
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Label
+                                Content="Name"
+                                FontSize="16"
+                                Foreground="{StaticResource BgColor}"
+                                Style="{StaticResource lblSemiBold}" />
+                            <Label
+                                Content="*"
+                                FontSize="15"
+                                Foreground="red"
+                                Style="{StaticResource lblSemiBold}" />
+                        </StackPanel>
+                        <Border
+                            BorderBrush="LightGray"
+                            BorderThickness="2"
+                            Style="{StaticResource bdrAddEmployee}">
+                            <TextBox
+                                x:Name="txtDeviceName"
+                                x:Uid="Name"
+                                VerticalAlignment="Center"
+                                KeyDown="txtKey_KeyDown"
+                                Style="{StaticResource addEmpEntry}"
+                                TextChanged="txtDeviceName_TextChanged" />
+                        </Border>
+
+                        <TextBlock
+                            x:Name="txtWarningName"
+                            Foreground="Red"
+                            Style="{StaticResource TextBlockRegular}"
+                            Text="Please enter device name"
+                            Visibility="Hidden" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="2">
+                        <StackPanel Orientation="Horizontal">
+                            <Label
+                                Content="IP Address"
+                                FontSize="16"
+                                Foreground="{StaticResource BgColor}"
+                                Style="{StaticResource lblSemiBold}" />
+                            <Label
+                                Content="*"
+                                FontSize="15"
+                                Foreground="red"
+                                Style="{StaticResource lblSemiBold}" />
+                        </StackPanel>
+                        <Border
+                            BorderBrush="LightGray"
+                            BorderThickness="2"
+                            Style="{StaticResource bdrAddEmployee}">
+                            <TextBox
+                                x:Name="txtIPAddress"
+                                x:Uid="IP"
+                                VerticalAlignment="Center"
+                                KeyDown="txtKey_KeyDown"
+                                Style="{StaticResource addEmpEntry}"
+                                TextChanged="txtIPAddress_TextChanged" />
+                        </Border>
+                        <TextBlock
+                            x:Name="txtWarningIP"
+                            Foreground="Red"
+                            Style="{StaticResource TextBlockRegular}"
+                            Text="Please enter IP Address"
+                            Visibility="Hidden" />
+                    </StackPanel>
+
+                    <!--#endregion-->
+                    <!--#region [ Row - 1 ]-->
+                    <StackPanel Grid.Row="1" Grid.Column="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Label
+                                Content="Port"
+                                FontSize="16"
+                                Foreground="{StaticResource BgColor}"
+                                Style="{StaticResource lblSemiBold}" />
+                            <Label
+                                Content="*"
+                                FontSize="15"
+                                Foreground="red"
+                                Style="{StaticResource lblSemiBold}" />
+                        </StackPanel>
+                        <Border
+                            BorderBrush="LightGray"
+                            BorderThickness="2"
+                            Style="{StaticResource bdrAddEmployee}">
+                            <TextBox
+                                x:Name="txtPort"
+                                x:Uid="Port"
+                                VerticalAlignment="Center"
+                                KeyDown="txtKey_KeyDown"
+                                Style="{StaticResource addEmpEntry}"
+                                TextChanged="txtPort_TextChanged" />
+                        </Border>
+                        <TextBlock
+                            x:Name="txtWarningPort"
+                            Foreground="Red"
+                            Style="{StaticResource TextBlockRegular}"
+                            Text="Please enter Port number"
+                            Visibility="Hidden" />
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region [ ROW - 4 ]-->
+                    <StackPanel
+                        x:Name="stkIsCheck"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Mouse.MouseDown="stkActive_MouseEnter"
+                        Orientation="Horizontal">
+                        <Image
+                            x:Name="imgCheckBox"
+                            Width="25"
+                            Height="25"
+                            Source="pack://application:,,,/Images/icon_black_check.png"
+                            Stretch="Uniform" />
+                        <Label
+                            VerticalContentAlignment="Center"
+                            Content="Is Active"
+                            FontSize="16"
+                            Foreground="{StaticResource lblLstColor}"
+                            Style="{StaticResource lblMedium}" />
+                    </StackPanel>
+
+                    <!--#endregion-->
+
+                    <Border
+                        x:Name="bdrSave"
+                        Grid.Row="4"
+                        Grid.ColumnSpan="3"
+                        Height="50"
+                        VerticalAlignment="Center"
+                        Background="{StaticResource AppButton2}"
+                        CornerRadius="8"
+                        Mouse.MouseDown="bdrSave_MouseDown">
+                        <Label
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="Save"
+                            FontSize="18"
+                            Foreground="{StaticResource PrimaryWhite}"
+                            Style="{StaticResource lblSemiBold}" />
+                        <Border.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            AutoReverse="False"
+                                            Storyboard.TargetProperty="Opacity"
+                                            From="0.1"
+                                            To="0.9"
+                                            Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Border.Triggers>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

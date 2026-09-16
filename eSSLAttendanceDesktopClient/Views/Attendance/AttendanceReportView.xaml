@@ -1,0 +1,266 @@
+﻿<UserControl
+    x:Class="eSSLAttendanceDesktopClient.Views.Attendance.AttendanceReportView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:eSSLAttendanceDesktopClient.Converter"
+    xmlns:local="clr-namespace:eSSLAttendanceDesktopClient.Views.Attendance"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <data:StatusToBGColorConverter x:Key="StatusToBGColorConverter" />
+        <data:IntToBGColorConverter x:Key="IntToBGColorConverter" />
+    </UserControl.Resources>
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Margin="0,15,0,0"
+            Padding="15"
+            Background="{StaticResource EntBdrBGColor}"
+            CornerRadius="8,8,0,0">
+            <Grid Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Name"
+                    FontSize="15"
+                    Style="{StaticResource lblSemiBold}" />
+
+                <Label
+                    Grid.Column="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Shift &amp; Status"
+                    FontSize="15"
+                    Style="{StaticResource lblSemiBold}" />
+
+                <Label
+                    Grid.Column="4"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Check In"
+                    FontSize="15"
+                    Style="{StaticResource lblSemiBold}" />
+
+                <Label
+                    Grid.Column="6"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Check Out"
+                    FontSize="15"
+                    Style="{StaticResource lblSemiBold}" />
+
+                <Label
+                    Grid.Column="8"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Required Time"
+                    FontSize="15"
+                    Style="{StaticResource lblSemiBold}" />
+
+                <Label
+                    Grid.Column="10"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Actule Time"
+                    FontSize="15"
+                    Style="{StaticResource lblSemiBold}" />
+            </Grid>
+
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Margin="0"
+            Padding="0"
+            CornerRadius="0,0,8,8">
+            <ListView
+                x:Name="lstAttendanceReport"
+                Margin="0"
+                Padding="0"
+                HorizontalContentAlignment="Stretch"
+                Background="{StaticResource PrimaryWhite}"
+                BorderThickness="0"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                SelectionMode="Single">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Margin" Value="0,5,0,5" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="0">
+                                        <ContentPresenter />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="Transparent" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DataGridCell
+                            Margin="0"
+                            Padding="10"
+                            VerticalAlignment="Stretch"
+                            Background="{Binding BgColor, Converter={StaticResource IntToBGColorConverter}}"
+                            BorderThickness="0">
+                            <Grid Margin="10,15" VerticalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Content="{Binding Name}"
+                                    Style="{StaticResource lblLstRegular}" />
+
+                                <Border
+                                    Grid.Column="2"
+                                    Width="70"
+                                    Padding="2"
+                                    HorizontalAlignment="Left"
+                                    Background="{Binding Status, Converter={StaticResource StatusToBGColorConverter}}"
+                                    BorderThickness="0"
+                                    CornerRadius="5">
+                                    <Label
+                                        HorizontalAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        Content="{Binding Status}"
+                                        FontSize="15"
+                                        Foreground="{StaticResource PrimaryWhite}"
+                                        Style="{StaticResource lblLstRegular}" />
+                                </Border>
+
+                                <Label
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Content="{Binding CheckIn, StringFormat='{}{0:HH:mm}'}"
+                                    Style="{StaticResource lblLstRegular}" />
+
+                                <Label
+                                    Grid.Column="6"
+                                    HorizontalAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Content="{Binding CheckOut}"
+                                    Style="{StaticResource lblLstRegular}" />
+
+                                <Label
+                                    Grid.Column="8"
+                                    HorizontalAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Content="{Binding RequiredTime}"
+                                    Style="{StaticResource lblLstRegular}" />
+
+                                <Label
+                                    Grid.Column="10"
+                                    HorizontalAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Content="{Binding ActuleTime}"
+                                    Style="{StaticResource lblLstRegular}" />
+                            </Grid>
+                        </DataGridCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
+
+        <Grid Grid.Row="2" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Content="Showing 1 to 2 of 20 Entries"
+                FontSize="15"
+                Foreground="Black"
+                Style="{StaticResource lblRegular}" />
+
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal"
+                Visibility="Hidden">
+                <Border
+                    Width="30"
+                    Height="30"
+                    Padding="5"
+                    Background="{StaticResource EntBdrBGColor}"
+                    CornerRadius="5">
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="01"
+                        FontSize="14"
+                        Style="{StaticResource lblRegular}" />
+                </Border>
+
+                <Border
+                    Width="30"
+                    Height="30"
+                    Padding="5"
+                    Background="{StaticResource EntBdrBGColor}"
+                    CornerRadius="5"
+                    Visibility="Visible">
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="02"
+                        FontSize="14"
+                        Style="{StaticResource lblRegular}" />
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

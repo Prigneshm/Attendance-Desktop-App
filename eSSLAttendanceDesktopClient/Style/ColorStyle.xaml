@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="PrimaryWhite">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="AppButton">#0B77A6</SolidColorBrush>
+    <SolidColorBrush x:Key="AppButton2">#0BA6F2</SolidColorBrush>
+    <SolidColorBrush x:Key="EntBdrBGColor">#444444</SolidColorBrush>
+    <SolidColorBrush x:Key="BgColor">#110D0E</SolidColorBrush>
+    <SolidColorBrush x:Key="lblLstColor">#000000</SolidColorBrush>
+    <SolidColorBrush x:Key="lstBGColor">#D0D0D0</SolidColorBrush>
+    <SolidColorBrush x:Key="BGColor">#444444</SolidColorBrush>
+    <SolidColorBrush x:Key="lstFirstRowColor">#F5F5F5</SolidColorBrush>
+    <SolidColorBrush x:Key="lstSecondRowColor">#E6E6E6</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryBorderBrush" Color="#FF0099CC" />
+    <SolidColorBrush x:Key="MaterialDesignDivider" Color="Transparent" />
+    <SolidColorBrush x:Key="MaterialDesignFocusedBrush" Color="Transparent" />
+</ResourceDictionary>

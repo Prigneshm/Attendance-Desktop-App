@@ -1,0 +1,139 @@
+﻿<UserControl
+    x:Class="eSSLAttendanceDesktopClient.Views.DeviceConnection.DeviceConnectionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:eSSLAttendanceDesktopClient.Views.DeviceConnection"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" />
+
+        <Label
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Content="Connect your device"
+            FontSize="20"
+            Foreground="{StaticResource BgColor}"
+            Style="{StaticResource lblSemiBold}" />
+
+        <StackPanel Grid.Row="3">
+            <Label
+                Content="IP Address"
+                FontSize="16"
+                Foreground="{StaticResource BgColor}"
+                Style="{StaticResource lblSemiBold}" />
+            <Border Style="{StaticResource bdrAddEmployee}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Style="{StaticResource addEmpEntry}" Text="enter IP address" />
+                    <Image
+                        Grid.Column="1"
+                        Width="20"
+                        Height="20"
+                        Source="pack://application:,,,/Images/icon_ipaddress.png"
+                        Stretch="Uniform" />
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5">
+            <Label
+                Content="Port"
+                FontSize="16"
+                Foreground="{StaticResource BgColor}"
+                Style="{StaticResource lblSemiBold}" />
+            <Border Style="{StaticResource bdrAddEmployee}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Style="{StaticResource addEmpEntry}" Text="enter port" />
+                    <Image
+                        Grid.Column="1"
+                        Width="20"
+                        Height="20"
+                        Source="pack://application:,,,/Images/icon_port.png"
+                        Stretch="Uniform" />
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <Border
+            x:Name="bdrConnect"
+            Grid.Row="7"
+            Height="50"
+            Margin="0,20,0,0"
+            Background="{StaticResource AppButton2}"
+            CornerRadius="8"
+            Mouse.MouseDown="bdrConnect_MouseEnter">
+            <Label
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Connect"
+                FontSize="18"
+                Foreground="{StaticResource PrimaryWhite}"
+                Style="{StaticResource lblSemiBold}" />
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                AutoReverse="False"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0.1"
+                                To="0.9"
+                                Duration="0:0:1" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+
+
+        <ItemsControl Name="itemsControl" Grid.Row="8">
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <!--  Header  -->
+                        <ContentControl
+                            Grid.Row="0"
+                            Padding="10"
+                            Background="LightGray"
+                            Content="Employee Id" />
+                        <!--  Items  -->
+                        <ItemsPresenter Grid.Row="1" />
+                    </Grid>
+                </ControlTemplate>
+            </ItemsControl.Template>
+            <!--  Items Source  -->
+            <ItemsControl.ItemsSource>
+                <CompositeCollection>
+                    <CollectionContainer Collection="{Binding Items}" />
+                </CompositeCollection>
+            </ItemsControl.ItemsSource>
+        </ItemsControl>
+    </Grid>
+</UserControl>
